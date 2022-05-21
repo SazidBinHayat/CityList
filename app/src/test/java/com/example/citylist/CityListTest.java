@@ -85,4 +85,19 @@ public class CityListTest {
         });
     }
 
+
+    @Test
+    public void testCount() {
+        CityList cityList = new CityList();
+        City c1 = new City("Regina", "SK");
+        City c2 = new City("R", "K");
+        cityList.add(c1);
+        cityList.add(c2);
+
+        cityList.countCity();
+        assertEquals(2, cityList.countCity());
+
+
+    }
+
 }
