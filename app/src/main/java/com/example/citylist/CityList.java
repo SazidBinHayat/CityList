@@ -32,4 +32,18 @@ public class CityList {
         Collections.sort(cityList);
         return cityList;
     }
+
+
+
+    /**
+     * This deletes a city to the list if that city does not exist
+     * @param city
+     *      This is the city to delete
+     */
+    public void delete(City city) {
+        if (!cities.contains(city)) {
+            throw new IllegalArgumentException();
+        }
+        cities.remove(city);
+    }
 }
