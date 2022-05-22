@@ -1,7 +1,10 @@
 package com.example.citylist;
 
+import androidx.core.widget.TextViewCompat;
+
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -23,13 +26,29 @@ public class CityList {
     }
 
     /**
-     * This returns a sorted list of cities
+     * This function returns sorted list according to city and province
+     * @param sortType
+     *
      * @return
-     *      Return the sorted list of cities
+     * returns sorted list
      */
-    public List<City> getCities() {
+    public List<City> getCities(int sortType) {
         List<City> cityList = cities;
-        Collections.sort(cityList);
+        if(sortType==1) {
+            Collections.sort(cityList);
+        }
+
+        else if (sortType==2)
+        {
+            Collections.sort(cityList, new Comparator<City>() {
+                @Override
+                public int compare(City city, City t1) {
+                    return city.getProvinceName().compareTo(t1.getProvinceName());
+                }
+            });
+        }
+
+
         return cityList;
     }
 
@@ -47,10 +66,18 @@ public class CityList {
         cities.remove(city);
     }
 
+    /**
+     * counts city number
+     * @return
+     * total  no of cities
+     */
+
 
     public int countCity()
     {
         return cities.size();
 
     }
+
+
 }
